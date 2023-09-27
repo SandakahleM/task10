@@ -1,0 +1,239 @@
+
+{% load static %}
+<!DOCTYPE html>
+
+<html lang = 'eng'>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <!-- import bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+        <!-- allow pdf import -->
+        <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.7.570/build/pdf.min.js"></script>
+
+        <!-- import stylesheet -->
+        <link rel = 'stylesheet'  href = "{%static 'stylesheet.css' %}">
+        <!-- import icons -->
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    </head>
+
+    <body>
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="login">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{# Assumes you set up the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+{% endblock %}
+
+
+
+
+
+
+{% comment %} <!-- base.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang = 'eng'>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <!-- import bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+        <!-- allow pdf import -->
+        <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.7.570/build/pdf.min.js"></script>
+
+        <!-- import stylesheet -->
+        <link rel = 'stylesheet'  href = "{%static 'stylesheet.css' %}">
+        <!-- import icons -->
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    </head>
+
+    <body>
+      <div class = "row">
+            {% if user.is_authenticated %}
+            <!-- navbar 2 (user logged in) -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light gradient-custom fixed-top">
+              <!-- Container wrapper start -->
+              <div class="container-fluid">
+                  <!-- Toggle button start -->
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <i class="fas fa-bars"></i>
+                  </button>
+                  <!-- Toggle button end -->
+
+                  <!-- Collapsible wrapper start -->
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand mt-2 mt-lg-0" href="{% url 'website:home' %}">
+                      <img
+                        src="{% static 'website/logo.png' %}" 
+                        height="100"
+                        alt="Company Logo"
+                        loading="lazy"
+                      />
+                    </a>
+                    <!-- Left links start -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 h3">
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'website:about_us' %}">About Us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'website:shop' %}">Shop</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'website:contact_us' %}">Contact Us</a>
+                      </li>
+                     
+                    <!-- Left links end -->
+                    <!-- Right elements start -->
+                    <div class = "navbar-nav">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img 
+                          class="avatar avatar-32 bg-light rounded-circle text-white p-2"
+                          src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg">
+                      </a>
+                      
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownAccount">
+                        <h5>{{ user.get_username }}</h5>
+                        <li class="nav-item dropdown">
+                          <a class="dropdown-item" href="{% url 'user_auth:logout' %}">Logout</a>
+                        </li>
+                      </ul>
+                      
+                    </div>
+                    <!-- Right elements end -->
+                  </div>
+                  <!-- Collapsible wrapper end -->
+            
+
+                
+              </div>
+              <!-- Container wrapper end -->
+            </nav>
+
+            {% else %}
+                <!-- navbar 1 (user not logged in) -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light gradient-custom fixed-top ">
+                    <!-- Container wrapper -->
+                    <div class="container-fluid">
+                      <!-- Toggle button -->
+                      <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                      >
+                        <i class="fas fa-bars"></i>
+                      </button>
+                  
+                      <!-- Collapsible wrapper -->
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Navbar brand -->
+                        <a class="navbar-brand mt-2 mt-lg-0" href="{% url 'website:home' %}">
+                          <img
+                            src="{% static 'website/logo.png' %}" 
+                            height="100"
+                            alt="Company Logo"
+                            loading="lazy"
+                          />
+                        </a>
+                        <!-- Left links -->
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 h3">
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'website:about_us' %}">About Us</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'website:shop' %}">Shop</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'website:contact_us' %}">Contact Us</a>
+                          </li>
+                         
+                        </ul>
+                        <!-- Left links -->
+                      </div>
+                      <!-- Collapsible wrapper -->
+                  
+                      <!-- Right elements -->
+                      <div class="d-flex align-items-center">
+                          <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-dark">
+                            <li class="nav-item">
+                              <a class="nav-link" href="{% url 'user_auth:login' %}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{% url 'user_auth:register_user' %}">Register</a>
+                            </li>
+                          </ul>
+                        
+                      </div>
+                      <!-- Right elements -->
+                    </div>
+                    <!-- Container wrapper -->
+                  </nav>
+
+              {% endif %}
+      </div>
+      <br><br><br><br><br><br>
+      <div class = "row">
+          {% block main %}{% endblock %}
+      </div>
+
+    </body>
+</html> {% endcomment %}
+
+
