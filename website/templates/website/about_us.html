@@ -1,0 +1,51 @@
+<!-- about_us.html -->
+{% extends 'website/base.html' %}
+{% load static %}
+{% block title%}About Us{% endblock %}
+{% block main %}
+<div class = "row">
+    <div class = "col-lg-1"></div>
+    <div class = "col-lg-6 gradient-custom text-white">
+        <div class="row">
+            <h1>About Us</h1>
+            <p>We provide a valuable service by giving shoppers access to fresh flowers online that can be delivered just <br>
+                about anywhere, quickly and simply. Our large network of professional florists and specially picked <br>
+                flower shops allows us to ensure that we deliver the best locally and globally. Working from their florist <br>
+                shops, our creative professionals offer up sublime blooms, arrangements and hampers that are <br>suitable for any occasion you can imagine. The flower shops we partner with buy fresh from the best
+                 <br>growers and markets, ensuring that we're always a cut above the rest - and at unbeatable prices too..</p>
+        </div>
+        <br>
+        <div class="row">
+            <h1>Our Team</h1>
+           <img src = "{% static 'website/team1.jpg' %}" class="rounded">
+            <p>Emma Oliver - Floral designer</p>
+            <p>I’m the founder of belissimo and my job is to make sure the shop grows in a sustainable, exciting way. My specialist sectors are financial and professional services and I’m good at making sure clients buy into the vision of where their brand could go, coming up with creative ideas and inspiring the team to achieve bigger and better things.</p>
+
+        </div>
+        <div class="row">
+           
+            <img src = "{% static 'website/team2.jpg' %}" class="rounded">
+            <p>Amelia Mark  - Customer service or sales representative </p>
+            <p>I am in charge of the day-to-day operational running of the business, which includes our business strategy, operations and client services.  Over the past 10 years I’ve transformed the way that we measure and report on what we do for our clients </p>
+        </div>
+        <div class="row">
+           
+            <img src = "{% static 'website/team3.jpg' %}"  class="rounded">
+            <p>Sophia Rich - Spray Maker</p>
+            <p>I’m responsible for maintaining the quality and standard of belissimo  flowers as well as the agency’s HR, learning and development.</p>
+        </div>
+    </div>
+     <!-- copyright section start -->
+     
+    <div class = "col-lg-5"></div>
+</div>
+<br><div class = "row"></div><br>
+
+<!-- templates/footer.html -->
+<footer>
+    <p class="copyright">2023 All Rights Reserved. </p>
+</footer>
+
+ 
+
+{% endblock %}

@@ -1,0 +1,184 @@
+.bg-custom-1 {
+  background-color: #af5480;
+}
+
+.bg-custom-2 {
+background-image: linear-gradient(15deg, #E9A4C3 100%, #49c9ba 0%);
+}
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #f797d8;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(243, 9, 169, 0.35), rgba(36, 33, 221, 0.35));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(243, 9, 169, 0.35), rgba(36, 33, 221, 0.35))
+}
+
+#wrapper {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.mask-custom {
+backdrop-filter: blur(0px);
+background-color: #FFC0CB(247, 89, 197);
+}
+/* Target the <ul> element with the class "navbar-dark" and its descendant <a> elements */
+.navbar-dark a {
+color: black; /* Set the text color to black */
+}
+
+body {
+ background-image: url("website/background.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+background-color: #cccccc;
+}
+
+
+.bg-custom-1 {
+  background-color: #af5480;
+}
+
+.bg-custom-2 {
+background-image: linear-gradient(15deg, #E9A4C3 100%, #49c9ba 0%);
+}
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #f797d8;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(243, 9, 169, 0.35), rgba(36, 33, 221, 0.35));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(243, 9, 169, 0.35), rgba(36, 33, 221, 0.35))
+}
+
+#wrapper {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.mask-custom {
+backdrop-filter: blur(0px);
+background-color: #FFC0CB(247, 89, 197);
+}
+/* Target the <ul> element with the class "navbar-dark" and its descendant <a> elements */
+.navbar-dark a {
+color: black; /* Set the text color to black */
+}
+
+body {
+ background-image: url("website/background.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+background-color: #cccccc;
+}
+
+
+
+
+
+/* Style the alert */
+.alert {
+  margin-top: 20px;
+  background-color: #f8d7da; /* Red background color */
+  color: #721c24; /* Dark red text color */
+  border-color: #f5c6cb; /* Light red border color */
+}
+
+.alert button.btn-close {
+  color: #721c24; /* Dark red color for the close button */
+}
+
+/* Style the page title */
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #FFFFFF; /*  text color */
+}
+
+/* Style the form inputs */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style the submit button */
+form input[type="submit"] {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style the submit button on hover */
+form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style the card */
+.shadow.p-4.mb-5.bg-body.rounded {
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.login-heading {
+  color: blue;
+  text-align: center;
+}
+
+/* Add any other CSS rules you need */
+/* styles.css */
+
+/* Style for form errors */
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+/* Style for the login form container */
+.login-form {
+  width: 30px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+/* Style for the submit button */
+.login-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style for the lost password link */
+.lost-password-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Add more custom styles as needed */
